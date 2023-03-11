@@ -4,21 +4,15 @@ import Container from "@mui/material/Container";
 import Fab from "@mui/material/Fab";
 import Toolbar from "@mui/material/Toolbar";
 
-import useHeaderState from "@/hooks/useHeaderState";
-
 import BackToTop from "./BackToTop";
 import { HideOnScroll } from "./HideOnScroll";
 import { Navbar } from "./Navbar";
 
 export const Header = () => {
-  const { isViewportScrolled } = useHeaderState();
   return (
     <>
       <HideOnScroll>
-        <AppBar
-          position="fixed"
-          color={isViewportScrolled ? "primary" : "transparent"}
-        >
+        <AppBar position="fixed" color="default">
           <Toolbar>
             <Container
               maxWidth="xl"

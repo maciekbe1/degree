@@ -14,7 +14,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       <CssBaseline />
       <Header />
       <div id="back-to-top-anchor"></div>
-      <Box mt={8}>{children}</Box>
+      <Box mt={10}>{children}</Box>
     </>
   );
 };
