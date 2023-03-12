@@ -2,7 +2,6 @@ import KeyboardArrowUp from "@mui/icons-material/KeyboardArrowUp";
 import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
 import Fab from "@mui/material/Fab";
-import Toolbar from "@mui/material/Toolbar";
 
 import BackToTop from "./BackToTop";
 import { HideOnScroll } from "./HideOnScroll";
@@ -13,14 +12,12 @@ export const Header = () => {
     <>
       <HideOnScroll>
         <AppBar position="fixed" color="default">
-          <Toolbar>
-            <Container
-              maxWidth="xl"
-              sx={{ display: `flex`, justifyContent: `space-between` }}
-            >
-              <Navbar />
-            </Container>
-          </Toolbar>
+          <Container
+            maxWidth="lg"
+            sx={{ display: `flex`, justifyContent: `space-between` }}
+          >
+            <Navbar />
+          </Container>
         </AppBar>
       </HideOnScroll>
       <BackToTop>
