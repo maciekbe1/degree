@@ -17,42 +17,38 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      const product = action.payload;
-      const existingItem = state.items.find((i) => i.id === product.id);
+      const item = action.payload;
+      const existingItem = state.items.find((i) => i.id === item.id);
       if (existingItem) {
         existingItem.quantity++;
       } else {
-        state.items.push({ ...product, quantity: 1 });
+        state.items.push({ ...item, quantity: 1 });
       }
-      state.total = fixedNumber(state.total + product.price);
+      state.total = fixedNumber(state.total + item.price);
     },
     removeFromCart: (state, action) => {
-      const productId = action.payload;
-      const productIndex = state.items.findIndex(
-        (product) => product.id === productId
-      );
-      if (productIndex !== -1) {
-        const product = state.items[productIndex];
-        state.items.splice(productIndex, 1);
-        state.total = fixedNumber(
-          state.total - product.price * product.quantity
-        );
+      const itemId = action.payload;
+      const itemIndex = state.items.findIndex((item) => item.id === itemId);
+      if (itemIndex !== -1) {
+        const item = state.items[itemIndex];
+        state.items.splice(itemIndex, 1);
+        state.total = fixedNumber(state.total - item.price * item.quantity);
       }
     },
     decreaseQuantity: (state, action) => {
-      const productId = action.payload;
-      const product = state.items.find((p) => p.id === productId);
-      if (product && product.quantity > 1) {
-        product.quantity--;
-        state.total = fixedNumber(state.total - product.price);
+      const itemId = action.payload;
+      const item = state.items.find((p) => p.id === itemId);
+      if (item && item.quantity > 1) {
+        item.quantity--;
+        state.total = fixedNumber(state.total - item.price);
       }
     },
     increaseQuantity: (state, action) => {
-      const productId = action.payload;
-      const product = state.items.find((p) => p.id === productId);
-      if (product) {
-        product.quantity++;
-        state.total = fixedNumber(state.total + product.price);
+      const itemId = action.payload;
+      const item = state.items.find((p) => p.id === itemId);
+      if (item) {
+        item.quantity++;
+        state.total = fixedNumber(state.total + item.price);
       }
     },
   },

@@ -1,15 +1,21 @@
 import {
-  Avatar,
   Button,
   ButtonGroup,
-  ListItem,
+  Link,
   ListItemAvatar,
   ListItemText,
   Typography,
 } from "@mui/material";
-import { styled } from "@mui/system";
 
 import { CartItem } from "@/types";
+import { formatPrice } from "@/utils/formatPrice";
+
+import {
+  StyledAvatar,
+  StyledListItem,
+  StyledProductControl,
+  StyledProductInfo,
+} from "./CartDrawerItem.styles";
 
 type CartDrawerItemProps = {
   item: CartItem;
@@ -17,29 +23,7 @@ type CartDrawerItemProps = {
   onIncrease: (productId: number) => void;
   onDecrease: (productId: number) => void;
 };
-const StyledListItem = styled(ListItem)({
-  display: "flex",
-  flexDirection: "column",
-  "& .MuiListItemText-multiline": {
-    margin: "0 0 0 8px",
-  },
-});
-const StyledAvatar = styled(Avatar)({
-  width: "60px",
-  height: "60px",
-});
-const StyledProductControl = styled("div")({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  width: "100%",
-});
-const StyledProductInfo = styled("div")({
-  width: "100%",
-  display: "flex",
-  justifyContent: "space-between",
-  marginBottom: "12px",
-});
+
 export const CartDrawerItem: React.FC<CartDrawerItemProps> = ({
   item,
   onRemove,
@@ -54,17 +38,19 @@ export const CartDrawerItem: React.FC<CartDrawerItemProps> = ({
         </ListItemAvatar>
         <ListItemText
           primary={
-            <Typography
-              variant="body1"
-              noWrap
-              sx={{
-                overflow: "hidden",
-              }}
-            >
-              {item.title}
-            </Typography>
+            <Link href={`/product/${item.id}`}>
+              <Typography
+                variant="body1"
+                noWrap
+                sx={{
+                  overflow: "hidden",
+                }}
+              >
+                {item.title}
+              </Typography>
+            </Link>
           }
-          secondary={`$${item.price}`}
+          secondary={formatPrice(item.price)}
         />
       </StyledProductInfo>
       <StyledProductControl>

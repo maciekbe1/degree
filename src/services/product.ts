@@ -9,7 +9,7 @@ export const productApi = createApi({
     getAllProducts: builder.query<ProductType[], void>({
       query: () => `products`,
     }),
-    getProduct: builder.query<ProductType, void>({
+    getProduct: builder.query<ProductType, string | undefined>({
       query: (number) => `products/${number}`,
     }),
   }),

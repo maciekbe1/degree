@@ -1,7 +1,5 @@
 import KeyboardArrowUp from "@mui/icons-material/KeyboardArrowUp";
-import AppBar from "@mui/material/AppBar";
-import Container from "@mui/material/Container";
-import Fab from "@mui/material/Fab";
+import { AppBar, Container, Fab } from "@mui/material";
 
 import BackToTop from "./BackToTop";
 import { HideOnScroll } from "./HideOnScroll";

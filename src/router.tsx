@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import { Cart, Home } from "./pages";
+import { Home, Product } from "./pages";
 
 export default createBrowserRouter([
   {
@@ -8,7 +8,7 @@ export default createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/cart",
-    element: <Cart />,
+    path: "/product/:id",
+    element: <Product />,
   },
 ]);

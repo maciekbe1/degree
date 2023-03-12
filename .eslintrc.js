@@ -42,6 +42,12 @@ module.exports = {
     "simple-import-sort/exports": "error",
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-explicit-any": "error",
+    "no-restricted-imports": [
+      "error",
+      {
+        patterns: ["@mui/*/*/*"],
+      },
+    ],
     "jsx-a11y/anchor-is-valid": [
       "error",
       {

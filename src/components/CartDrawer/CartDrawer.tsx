@@ -1,9 +1,6 @@
 import CloseIcon from "@mui/icons-material/Close";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Badge, Box, Button } from "@mui/material";
-import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
+import { Badge, Box, Button, Drawer, IconButton, List } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -11,7 +8,7 @@ import {
   increaseQuantity,
   removeFromCart,
 } from "@/reducers/cart";
-import { handleCartDrawer } from "@/reducers/drawer";
+import { openDrawer } from "@/reducers/drawer";
 import { RootState } from "@/store";
 
 import { CartDrawerItem } from "./CartDrawerItem";
@@ -24,36 +21,29 @@ export const CartDrawer = () => {
     (state: RootState) => state.persistedReducer.drawer.isOpen
   );
 
-  const cartItems = useSelector(
-    (state: RootState) => state.persistedReducer.cart.items
+  const { items, total } = useSelector(
+    (state: RootState) => state.persistedReducer.cart
   );
 
-  const totalPrice = useSelector(
-    (state: RootState) => state.persistedReducer.cart.total
-  );
-
-  const cartLength = cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
+  const cartLength = items.reduce((total, item) => total + item.quantity, 0);
 
   const onDrawerHandler = (isOpen: boolean) => {
-    dispatch(handleCartDrawer(isOpen));
+    dispatch(openDrawer(isOpen));
   };
 
-  const onProductRemove = (productId: number) => {
-    dispatch(removeFromCart(productId));
+  const onProductRemove = (itemId: number) => {
+    dispatch(removeFromCart(itemId));
     if (cartLength === 1) {
-      dispatch(handleCartDrawer(false));
+      dispatch(openDrawer(false));
     }
   };
 
-  const onProductIncrease = (productId: number) => {
-    dispatch(increaseQuantity(productId));
+  const onProductIncrease = (itemId: number) => {
+    dispatch(increaseQuantity(itemId));
   };
 
-  const onProductDecrease = (productId: number) => {
-    dispatch(decreaseQuantity(productId));
+  const onProductDecrease = (itemId: number) => {
+    dispatch(decreaseQuantity(itemId));
   };
 
   return (
@@ -96,7 +86,7 @@ export const CartDrawer = () => {
         </Box>
 
         <List sx={{ width: 320 }} role="presentation">
-          {cartItems.map((item, i) => (
+          {items.map((item, i) => (
             <CartDrawerItem
               key={i}
               item={item}
@@ -106,7 +96,7 @@ export const CartDrawer = () => {
             />
           ))}
         </List>
-        <CartDrawerTotal total={totalPrice} />
+        <CartDrawerTotal total={total} />
       </Drawer>
     </>
   );

@@ -1,5 +1,4 @@
-import Slide from "@mui/material/Slide";
-import useScrollTrigger from "@mui/material/useScrollTrigger";
+import { Slide, useScrollTrigger } from "@mui/material";
 import { ReactElement } from "react";
 
 type HideOnScrollProps = {

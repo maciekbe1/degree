@@ -1,6 +1,4 @@
-import Box from "@mui/material/Box";
-import useScrollTrigger from "@mui/material/useScrollTrigger";
-import Zoom from "@mui/material/Zoom";
+import { Box, useScrollTrigger, Zoom } from "@mui/material";
 import { ReactNode } from "react";
 
 type BackToTop = {

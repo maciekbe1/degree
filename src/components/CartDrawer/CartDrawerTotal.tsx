@@ -1,18 +1,10 @@
-import { styled } from "@mui/system";
-
 import { formatPrice } from "@/utils/formatPrice";
+
+import { TotalWrapper } from "./CartDrawerTotal.styles";
 
 type CartDrawerTotalProps = {
   total: number;
 };
-
-const TotalWrapper = styled("div")({
-  display: "flex",
-  justifyContent: "space-between",
-  fontWeight: "bold",
-  padding: "0 8px",
-  marginBottom: "24px",
-});
 
 export const CartDrawerTotal = ({ total }: CartDrawerTotalProps) => {
   return (

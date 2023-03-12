@@ -6,10 +6,10 @@ export const drawerSlice = createSlice({
     isOpen: false,
   },
   reducers: {
-    handleCartDrawer: (state, { payload }) => {
+    openDrawer: (state, { payload }) => {
       state.isOpen = payload;
     },
   },
 });
-export const { handleCartDrawer } = drawerSlice.actions;
+export const { openDrawer } = drawerSlice.actions;
 export default drawerSlice.reducer;
