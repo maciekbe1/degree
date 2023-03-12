@@ -51,7 +51,15 @@ export const Product = () => {
               {product?.title}
             </Typography>
           </CardContent>
-          <CardMedia component="img" image={product?.image} />
+          <CardMedia
+            component="img"
+            image={product?.image}
+            alt={product?.title}
+            sx={{
+              maxHeight: 600,
+              objectFit: "contain",
+            }}
+          />
         </Card>
       </Grid>
       <Grid item xs={12} md={6}>
