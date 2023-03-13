@@ -12,6 +12,9 @@ export const StyledListItem = styled(ListItem)({
 export const StyledAvatar = styled(Avatar)({
   width: "60px",
   height: "60px",
+  "& .MuiAvatar-img": {
+    objectFit: "contain",
+  },
 });
 
 export const StyledProductControl = styled("div")({
