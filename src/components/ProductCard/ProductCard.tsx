@@ -58,6 +58,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             }
           />
           <CardMedia
+            loading="lazy"
             component="img"
             height="240"
             image={product.image}

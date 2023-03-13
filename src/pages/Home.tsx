@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import { useDispatch } from "react-redux";
 
 import { ProductCard } from "@/components";
@@ -6,8 +6,7 @@ import { addToCart } from "@/reducers/cart";
 import { openDrawer } from "@/reducers/drawer";
 import { useGetAllProductsQuery } from "@/services/product";
 import { ProductType } from "@/types";
-
-export const Home = () => {
+const Home = () => {
   const { data, isLoading } = useGetAllProductsQuery();
   const dispatch = useDispatch();
 
@@ -18,9 +17,14 @@ export const Home = () => {
     dispatch(openDrawer(true));
   };
 
+  if (isLoading) {
+    //TODO: Prepare loading component
+    return <div>loading...</div>;
+  }
+
   return (
     <>
-      <Grid container spacing={4}>
+      <Grid container spacing={4} sx={{ mt: 0 }}>
         {data?.map((product, index) => (
           <Grid key={index} item xs={12} sm={6} md={4}>
             <ProductCard
@@ -31,7 +35,8 @@ export const Home = () => {
           </Grid>
         ))}
       </Grid>
-      {isLoading && <Box mt={4}>loading...</Box>}
     </>
   );
 };
+
+export default Home;

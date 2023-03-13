@@ -11,6 +11,7 @@ import {
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
+import { ProductNotExist } from "@/components";
 import {
   StyledFlexCenter,
   StyledFlexEnd,
@@ -21,7 +22,7 @@ import { openDrawer } from "@/reducers/drawer";
 import { useGetProductQuery } from "@/services/product";
 import { formatPrice } from "@/utils/formatPrice";
 
-export const Product = () => {
+const Product = () => {
   const { id } = useParams();
   const { data: product, isLoading, isError } = useGetProductQuery(id);
   const dispatch = useDispatch();
@@ -34,16 +35,22 @@ export const Product = () => {
     }
   };
 
+  //TODO: prepare error component
   if (isError) {
     return <p>error</p>;
   }
 
+  //TODO: prepare loading component
   if (isLoading) {
     return <p>...loading</p>;
   }
 
+  if (product === null) {
+    return <ProductNotExist />;
+  }
+
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} sx={{ mt: 0 }}>
       <Grid item xs={12} md={6}>
         <Card>
           <CardContent>
@@ -96,3 +103,5 @@ export const Product = () => {
     </Grid>
   );
 };
+
+export default Product;

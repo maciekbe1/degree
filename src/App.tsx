@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@mui/material/styles";
+import { Suspense } from "react";
 import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
@@ -15,7 +16,9 @@ function App() {
       <PersistGate loading={null} persistor={persistor}>
         <ThemeProvider theme={theme}>
           <Layout>
-            <RouterProvider router={router} />
+            <Suspense fallback={null}>
+              <RouterProvider router={router} />
+            </Suspense>
           </Layout>
         </ThemeProvider>
       </PersistGate>
