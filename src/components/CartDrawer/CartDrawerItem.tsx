@@ -22,6 +22,7 @@ type CartDrawerItemProps = {
   onRemove: (productId: number) => void;
   onIncrease: (productId: number) => void;
   onDecrease: (productId: number) => void;
+  onClose: () => void;
 };
 
 export const CartDrawerItem: React.FC<CartDrawerItemProps> = ({
@@ -29,6 +30,7 @@ export const CartDrawerItem: React.FC<CartDrawerItemProps> = ({
   onRemove,
   onIncrease,
   onDecrease,
+  onClose,
 }) => {
   return (
     <StyledListItem divider>
@@ -38,7 +40,7 @@ export const CartDrawerItem: React.FC<CartDrawerItemProps> = ({
         </ListItemAvatar>
         <ListItemText
           primary={
-            <Link href={`/product/${item.id}`}>
+            <Link href={`/product/${item.id}`} onClick={onClose}>
               <Typography
                 variant="body1"
                 noWrap

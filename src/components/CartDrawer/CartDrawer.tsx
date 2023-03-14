@@ -93,6 +93,7 @@ export const CartDrawer = () => {
               onRemove={onProductRemove}
               onIncrease={onProductIncrease}
               onDecrease={onProductDecrease}
+              onClose={() => onDrawerHandler(false)}
             />
           ))}
         </List>
