@@ -9,7 +9,7 @@ import { productApi } from "@/services/product";
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["drawer", "product"],
+  blacklist: ["drawer"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
