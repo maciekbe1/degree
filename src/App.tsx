@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 
-import { Layout } from "@/components";
 import { persistor, store } from "@/store";
 
 import router from "./router";
@@ -15,11 +14,9 @@ function App() {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ThemeProvider theme={theme}>
-          <Layout>
-            <Suspense fallback={null}>
-              <RouterProvider router={router} />
-            </Suspense>
-          </Layout>
+          <Suspense fallback={null}>
+            <RouterProvider router={router} />
+          </Suspense>
         </ThemeProvider>
       </PersistGate>
     </Provider>

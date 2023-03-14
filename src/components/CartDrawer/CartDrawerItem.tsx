@@ -1,12 +1,12 @@
 import {
   Button,
   ButtonGroup,
-  Link,
   ListItemAvatar,
   ListItemText,
   Typography,
 } from "@mui/material";
 
+import { Link } from "@/components";
 import { CartItem } from "@/types";
 import { formatPrice } from "@/utils/formatPrice";
 

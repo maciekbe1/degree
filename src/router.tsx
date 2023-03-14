@@ -1,6 +1,8 @@
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
+import { Layout } from "@/components";
+
 const Home = lazy(() => import("./pages/Home"));
 const Product = lazy(() => import("./pages/Product"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -8,14 +10,26 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 export default createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: (
+      <Layout>
+        <Home />
+      </Layout>
+    ),
   },
   {
     path: "/product/:id",
-    element: <Product />,
+    element: (
+      <Layout>
+        <Product />
+      </Layout>
+    ),
   },
   {
     path: "*",
-    element: <NotFound />,
+    element: (
+      <Layout>
+        <NotFound />
+      </Layout>
+    ),
   },
 ]);

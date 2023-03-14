@@ -11,6 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 
+import { Link } from "@/components";
 import { ProductType } from "@/types";
 import { formatPrice } from "@/utils/formatPrice";
 
@@ -27,7 +28,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     <Tooltip title={product.title} placement="top">
       <Card raised sx={{ height: "100%" }}>
         <CardActionArea
-          LinkComponent="a"
+          LinkComponent={Link}
           href={`/product/${product.id}`}
           sx={{
             height: "100%",

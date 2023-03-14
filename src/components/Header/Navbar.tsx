@@ -1,5 +1,6 @@
 import Home from "@mui/icons-material/Home";
 import { IconButton, Toolbar } from "@mui/material";
+import { Link } from "react-router-dom";
 
 import { CartDrawer } from "@/components";
 
@@ -14,9 +15,12 @@ export const Navbar = () => {
         padding: 0,
       }}
     >
-      <IconButton edge="start" aria-label="home" href="/" color="primary">
-        <Home />
-      </IconButton>
+      <Link to="/">
+        <IconButton edge="start" aria-label="home" color="primary">
+          <Home />
+        </IconButton>
+      </Link>
+
       <CartDrawer />
     </Toolbar>
   );
